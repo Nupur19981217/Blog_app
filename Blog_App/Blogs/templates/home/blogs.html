@@ -1,0 +1,14 @@
+<html>
+    <head>View all blogs</head>
+
+    <body>
+        <div>
+            {% for blog in blogs %}
+                <li> <a href="http://127.0.0.1:8000/{{ blog.title }}/" onclick="show"> {{ blog.title }} </a> </li>
+                <li> {{ blog.author }} </li>
+                <li> {{ blog.date }} </li>
+                <br />
+            {% endfor %}
+        </div>
+    </body>
+</html>

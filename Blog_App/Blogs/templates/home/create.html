@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Write your Blog</title>
+    </head>
+
+    <style>
+        #blog {
+            height: 250px;
+            width: 500px;
+        }
+    </style>
+
+    <body style="text-align: center;">
+        <form action="http://127.0.0.1:8000/add/" method="POST">{% csrf_token %}
+            Name : <input type="text" name="author" id="author" placeholder="Enter your name" onblur="ret_dateTime()"> <br><br>
+            <input type="hidden" name="date" id="date">
+            title : <input type="text" name="title" id="title" placeholder="Enter the title of your blog" onblur="check()"> <br><br>
+            desc : <input type="text" name="desc" id="desc" placeholder="Enter the brief description of your blog"> <br><br>
+            blog : <textarea name= "blog" rows="10" cols="50" onblur="blog_check()" id="blog">  </textarea><br><br>
+            <input type="submit" value="Add">
+        </form>
+    </body>
+    <script>
+        function ret_dateTime(){
+            var tmp = new Date();
+            var dt = tmp.getFullYear() + "-" + tmp.getMonth() + "-" + tmp.getDate();
+            document.getElementById('date').setAttribute('value',dt);
+        }
+
+        function check(){
+            if(document.getElementById('date').value == null)
+            {
+                document.getElementById('title').style.border="2px solid red";
+            }
+        }
+
+        function blog_check(){
+            var dt = new Date();
+            if(document.getElementById('blog').value.length < 5)
+            {
+                document.getElementById('title').style.border="2px solid red";
+            }
+        }
+    </script>
+</html>
